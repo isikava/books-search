@@ -1,29 +1,17 @@
-import React, { useState } from 'react';
-import { IoClose, IoSearch } from 'react-icons/io5';
+import React from 'react';
+import { IoSearch } from 'react-icons/io5';
 
-export const Search = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
+export const Search = ({ value, onChange, onSubmit }) => {
   return (
-    <form onSubmit={handleSubmit} className='w-full '>
-      <div className='relative text-gray-900'>
-        {searchQuery}
+    <form onSubmit={onSubmit} className='w-full '>
+      <div className='relative text-gray-800'>
         <input
           className='block p-2 w-full bg-gray-50 border border-gray-300
           focus:ring-blue-500 focus:border-blue-500'
-          type='search'
+          type='text'
           placeholder='Search for...'
-          value={searchQuery}
-          onChange={handleChange}
+          value={value}
+          onChange={onChange}
         />
         <button
           type='submit'
@@ -38,16 +26,3 @@ export const Search = () => {
     </form>
   );
 };
-
-// <form className='w-full flex bg-white' onSubmit={handleSubmit}>
-//   <input
-//     type='Search'
-//     placeholder='Search for...'
-//     className='w-full p-1 text-gray-900'
-//     value={searchQuery}
-//     onChange={handleChange}
-//   />
-//   <button type='submit' className='text-xl text-gray-900'>
-//     <IoSearch />
-//   </button>
-// </form>
