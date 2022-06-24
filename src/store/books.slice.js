@@ -2,9 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getBooksApi } from '../api';
 
 const booksSlice = createSlice({
-  name: 'search',
+  name: 'books',
   initialState: {
     books: [],
+    total: null,
     loading: false,
     errors: false,
   },
@@ -21,16 +22,25 @@ const booksSlice = createSlice({
       state.loading = false;
       state.errors = true;
     },
+    setTotal: (state, { payload }) => {
+      state.total = payload;
+    },
     clearBooks: (state) => {
       state.books = [];
+      state.total = null;
       state.loading = false;
       state.errors = false;
     },
   },
 });
 
-export const { getBooksStart, getBooksSuccess, getBooksFailure, clearBooks } =
-  booksSlice.actions;
+export const {
+  getBooksStart,
+  getBooksSuccess,
+  getBooksFailure,
+  setTotal,
+  clearBooks,
+} = booksSlice.actions;
 
 export default booksSlice.reducer;
 
@@ -45,7 +55,6 @@ export const fetchBooks =
         index,
         maxResults
       );
-      if (!data) return;
       dispatch(getBooksSuccess(data.items));
     } catch (err) {
       dispatch(getBooksFailure());

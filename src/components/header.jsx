@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import { Select } from './Select';
 import { Search } from './Search';
 
@@ -13,6 +15,7 @@ import {
 
 export const Header = () => {
   const dispatch = useDispatch();
+  let navigate = useNavigate();
   // Локальный инпут, который передается в стор на onSubmit
   const [input, setInput] = useState('');
   const { category, sortBy } = useSelector((state) => state.search);
@@ -33,11 +36,15 @@ export const Header = () => {
     e.preventDefault();
     // передача локального инпута в глобальный
     dispatch(setQuery(input));
+    navigate('/', { replace: true });
     setInput('');
   };
 
   return (
-    <header className='bg-slate-500 text-white p-2 sm:p-6'>
+    <header
+      className='text-white p-2 sm:p-6 
+    bg-gradient-to-r from-stone-900 via-slate-800 to-indigo-800'
+    >
       <div className='max-w-2xl mx-auto'>
         <div className='flex flex-col items-center'>
           <h1
