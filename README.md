@@ -1,5 +1,7 @@
 # Тестовое задание на позицию frontend разработчика
 
+[Demo](http://alexign473.github.io/books-search)
+
 ## Использованы
 
 - React

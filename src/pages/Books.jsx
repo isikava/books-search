@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BookCard } from '../components/BookCard';
-import { Loader } from '../components/Loader';
 
+import { BookCard, Loader } from '../components';
 import { fetchBooks, clearBooks } from '../store/books.slice';
 
 export const Books = () => {
