@@ -19,7 +19,11 @@ export const Card = ({ id, title, authors, categories, thumbnail }) => {
           {categories && (
             <span className='text-gray-500 underline'>{categories}</span>
           )}
-          {title && <h2 className='text-xl font-semibold mt-4'>{title}</h2>}
+          {title && (
+            <Link to={id}>
+              <h2 className='text-xl font-semibold mt-4'>{title}</h2>
+            </Link>
+          )}
           {authors && (
             <span className='text-gray-500 mt-4'>{authors.join(', ')}</span>
           )}
