@@ -18,9 +18,6 @@ export const getBooksApi = async (
   return await axios.get(encodeURI(url));
 };
 
-// export const getBookApi = async (id) =>
-//   await axios.get(`${baseUrl}/volumes/${id}`);
-
 export const getBookApi = async (id) =>
   await axios.get(
     `${baseUrl}/volumes/${id}?fields=id,volumeInfo(title,imageLinks,authors,categories,description)&key=${API_KEY}`

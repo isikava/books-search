@@ -1,4 +1,4 @@
-export * from './BookCard';
+export * from './BooksList';
 export * from './Card';
 export * from './Details';
 export * from './Header';

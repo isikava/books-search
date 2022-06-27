@@ -14,8 +14,9 @@ export const Book = () => {
     dispatch(fetchBook(id));
   }, [dispatch, id]);
 
+  if (!book) return null;
   if (loading) return <Loader />;
-  if (errors) return <div>Ошибка при загрузке.</div>;
+  if (errors) return <div>Loading error.</div>;
 
   return (
     <main className='p-2 md:p-4 max-w-7xl mx-auto'>

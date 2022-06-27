@@ -18,7 +18,6 @@ export const Details = ({ imgUrl, categories, title, authors, desc }) => {
         {authors && (
           <p className='text-gray-500 underline'>{authors.join(', ')}</p>
         )}
-        {/* {desc && <p>{desc}</p>} */}
         {desc && <p dangerouslySetInnerHTML={{ __html: desc }}></p>}
       </div>
     </section>
