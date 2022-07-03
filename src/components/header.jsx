@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,8 +16,7 @@ import {
 export const Header = () => {
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  // Локальный инпут, который передается в стор на onSubmit
-  const [input, setInput] = useState('');
+  const inputRef = useRef();
   const { category, sortBy } = useSelector((state) => state.search);
 
   const handleCategoryChange = (e) => {
@@ -28,16 +27,11 @@ export const Header = () => {
     dispatch(setSort(e.target.value));
   };
 
-  const handleInputChange = (e) => {
-    setInput(e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // передача локального инпута в глобальный
-    dispatch(setQuery(input));
+    dispatch(setQuery(inputRef.current.value));
     navigate('/', { replace: true });
-    setInput('');
+    inputRef.current.value = '';
   };
 
   return (
@@ -54,11 +48,7 @@ export const Header = () => {
             Search for books
           </h1>
           {/* Поиск */}
-          <Search
-            value={input}
-            onChange={handleInputChange}
-            onSubmit={handleSubmit}
-          />
+          <Search inputRef={inputRef} onSubmit={handleSubmit} />
 
           {/* Сортировка */}
           <div className='w-full flex mt-2 space-x-3'>

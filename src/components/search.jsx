@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoSearch } from 'react-icons/io5';
 
-export const Search = ({ value, onChange, onSubmit }) => {
+export const Search = ({ inputRef, onSubmit }) => {
   return (
     <form onSubmit={onSubmit} className='w-full '>
       <div className='relative text-gray-800'>
@@ -10,8 +10,7 @@ export const Search = ({ value, onChange, onSubmit }) => {
           focus:ring-blue-500 focus:border-blue-500'
           type='text'
           placeholder='Search for...'
-          value={value}
-          onChange={onChange}
+          ref={inputRef}
         />
         <button
           type='submit'
