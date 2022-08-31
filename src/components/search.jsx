@@ -11,6 +11,7 @@ export const Search = ({ inputRef, onSubmit }) => {
           type='text'
           placeholder='Search for...'
           ref={inputRef}
+          autoFocus
         />
         <button
           type='submit'

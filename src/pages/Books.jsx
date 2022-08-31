@@ -32,7 +32,13 @@ export const Books = () => {
       <div className='mb-6 text-center'>
         {total && <span className='text-xl'>Found {total} results</span>}
       </div>
-      {books && <BooksList books={books} />}
+      {books.length > 0 ? (
+        <BooksList books={books} />
+      ) : (
+        <div className='text-center text-2xl font-semibold text-gray-500'>
+          Type something to search.
+        </div>
+      )}
       <div
         id='load more'
         className='flex items-center justify-center w-full h-full my-4'
